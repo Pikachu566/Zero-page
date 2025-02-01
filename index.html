@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penyelenggaraan Website</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            border: 2px solid red;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px red;
+        }
+        h1 {
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .loading {
+            width: 50px;
+            height: 50px;
+            border: 5px solid red;
+            border-top: 5px solid black;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .chat-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .chat-button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Website Sedang Dibaik Pulih</h1>
+        <div class="loading"></div>
+        <p>Kami sedang melakukan penyelenggaraan untuk meningkatkan pengalaman anda. Harap bersabar dan kembali semula nanti.</p>
+        <p>Life Time: <span id="lifetime"></span></p> <!-- Website Maintenance -->
+        <a href="https://wasap.my/60175298421" class="chat-button" target="_blank">CHAT NOW</a>
+    </div>
+    <script>
+        function updateLifetime() {
+            const startDate = new Date("2025-02-01T00:00:00");
+            function refreshTime() {
+                const now = new Date();
+                const diff = now - startDate;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById("lifetime").innerText = `${days} hari, ${hours} jam, ${minutes} minit, ${seconds} saat`;
+            }
+            refreshTime();
+            setInterval(refreshTime, 1000);
+        }
+        document.addEventListener("DOMContentLoaded", updateLifetime);
+    </script>
+</body>
+</html>
 
